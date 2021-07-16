@@ -12,21 +12,10 @@ export default class App extends Component {
     bad: 0,
   };
 
-  handleIncrementGood = () => {
+  handleIncrement = (event) => {
+    const feedback = event.currentTarget.name;
     this.setState((prevState) => ({
-      good: prevState.good + 1,
-    }));
-  };
-
-  handleIncrementNeutral = () => {
-    this.setState((prevSt) => ({
-      neutral: prevSt.neutral + 1,
-    }));
-  };
-
-  handleIncrementBad = () => {
-    this.setState((prevStat) => ({
-      bad: prevStat.bad + 1,
+      [feedback]: prevState[feedback] + 1,
     }));
   };
 
@@ -34,16 +23,15 @@ export default class App extends Component {
     (this.total = this.state.good + this.state.bad + this.state.neutral);
 
   handleIncrementPositive = () =>
-    (this.positive = (this.state.good / this.total) * 100);
+    (this.positive = Math.round((this.state.good / this.total) * 100));
 
   render() {
     return (
       <Container>
         <Section title={"Please leave feedback"}>
           <FeedbackOptions
-            handleGood={this.handleIncrementGood}
-            handleBad={this.handleIncrementBad}
-            handleNeutral={this.handleIncrementNeutral}
+            handleFeedback={this.handleIncrement}
+            options={this.state}
           ></FeedbackOptions>
           <Statistics
             good={this.state.good}

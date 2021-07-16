@@ -23,12 +23,12 @@ function Statistics({ good, neutral, bad, total, positivePercentage, message }) 
 }
 
 Statistics.propTypes = {
-    good: PropTypes.number,
-    neutral: PropTypes.number,
-    bad: PropTypes.number,
-    total: PropTypes.func,
-    positivePercentage: PropTypes.func,
-    message: PropTypes.string,
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired,
+    message: PropTypes.string.isRequired,
 }
 
 export default Statistics
